@@ -6,8 +6,8 @@ import (
 	"github.com/boombuler/barcode/code128"
 	"github.com/boombuler/barcode/qr"
 	"github.com/jung-kurt/gofpdf"
-	"github.com/jung-kurt/gofpdf/contrib/barcode"
-	"github.com/jung-kurt/gofpdf/internal/example"
+	"github.com/jung-kurt/gofpdfcontrib/barcode"
+	"github.com/jung-kurt/gofpdfcontrib/internal/example"
 )
 
 func createPdf() (pdf *gofpdf.Fpdf) {
@@ -35,7 +35,7 @@ func ExampleRegister() {
 	err = pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_Register.pdf
+	// Successfully generated ../pdf/contrib_barcode_Register.pdf
 }
 
 func ExampleRegisterCodabar() {
@@ -50,7 +50,7 @@ func ExampleRegisterCodabar() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterCodabar.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterCodabar.pdf
 }
 
 func ExampleRegisterAztec() {
@@ -63,7 +63,7 @@ func ExampleRegisterAztec() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterAztec.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterAztec.pdf
 }
 
 func ExampleRegisterCode128() {
@@ -76,7 +76,7 @@ func ExampleRegisterCode128() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterCode128.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterCode128.pdf
 }
 
 func ExampleRegisterCode39() {
@@ -89,7 +89,7 @@ func ExampleRegisterCode39() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterCode39.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterCode39.pdf
 }
 
 func ExampleRegisterDataMatrix() {
@@ -102,7 +102,7 @@ func ExampleRegisterDataMatrix() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterDataMatrix.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterDataMatrix.pdf
 }
 
 func ExampleRegisterEAN() {
@@ -115,7 +115,7 @@ func ExampleRegisterEAN() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterEAN.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterEAN.pdf
 }
 
 func ExampleRegisterQR() {
@@ -128,7 +128,7 @@ func ExampleRegisterQR() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterQR.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterQR.pdf
 }
 
 func ExampleRegisterTwoOfFive() {
@@ -141,7 +141,7 @@ func ExampleRegisterTwoOfFive() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterTwoOfFive.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterTwoOfFive.pdf
 }
 
 func ExampleRegisterPdf417() {
@@ -154,7 +154,7 @@ func ExampleRegisterPdf417() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_RegisterPdf417.pdf
+	// Successfully generated ../pdf/contrib_barcode_RegisterPdf417.pdf
 }
 
 // TestRegisterCode128 ensures that no panic arises when an invalid barcode is registered.
@@ -179,7 +179,7 @@ func TestBarcodeUnscalable(t *testing.T) {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_Barcode.pdf
+	// Successfully generated ../pdf/contrib_barcode_Barcode.pdf
 }
 
 // TestGetUnscaledBarcodeDimensions shows that the width and height returned by the function match that of the barcode
@@ -197,5 +197,5 @@ func TestGetUnscaledBarcodeDimensions(t *testing.T) {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_barcode_GetBarcodeDimensions.pdf
+	// Successfully generated ../pdf/contrib_barcode_GetBarcodeDimensions.pdf
 }

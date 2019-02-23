@@ -2,8 +2,8 @@ package httpimg_test
 
 import (
 	"github.com/jung-kurt/gofpdf"
-	"github.com/jung-kurt/gofpdf/contrib/httpimg"
-	"github.com/jung-kurt/gofpdf/internal/example"
+	"github.com/jung-kurt/gofpdfcontrib/httpimg"
+	"github.com/jung-kurt/gofpdfcontrib/internal/example"
 )
 
 func ExampleRegister() {
@@ -19,5 +19,5 @@ func ExampleRegister() {
 	err := pdf.OutputFileAndClose(fileStr)
 	example.Summary(err, fileStr)
 	// Output:
-	// Successfully generated ../../pdf/contrib_httpimg_Register.pdf
+	// Successfully generated ../pdf/contrib_httpimg_Register.pdf
 }
