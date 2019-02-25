@@ -5,7 +5,7 @@ import (
 
 	"github.com/boombuler/barcode/code128"
 	"github.com/boombuler/barcode/qr"
-	"github.com/jung-kurt/gofpdf"
+	"github.com/jung-kurt/gofpdf/v2"
 	"github.com/jung-kurt/gofpdfcontrib/barcode"
 	"github.com/jung-kurt/gofpdfcontrib/internal/example"
 )

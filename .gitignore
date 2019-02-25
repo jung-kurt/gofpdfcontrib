@@ -14,3 +14,4 @@
 pdf/*.pdf
 ghostscript/*.pdf
 ghostscript/ghostscript
+*.swp

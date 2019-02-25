@@ -1,7 +1,7 @@
 package httpimg_test
 
 import (
-	"github.com/jung-kurt/gofpdf"
+	"github.com/jung-kurt/gofpdf/v2"
 	"github.com/jung-kurt/gofpdfcontrib/httpimg"
 	"github.com/jung-kurt/gofpdfcontrib/internal/example"
 )

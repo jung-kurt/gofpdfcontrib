@@ -5,6 +5,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/jung-kurt/gofpdf v1.0.0/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/jung-kurt/gofpdf v1.0.1 h1:edqVJAH0OvJmAAUup0lfOSM3VpPxQKtGvq3tu0MEknk=
 github.com/jung-kurt/gofpdf v1.0.1/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
+github.com/jung-kurt/gofpdf/v2 v2.0.0 h1:jznXXeImqKCnCM/I5yCoTuBjIdkx1OXnY2kjATsJV8M=
+github.com/jung-kurt/gofpdf/v2 v2.0.0/go.mod h1:59m4YstrsXqnwOx8NOVIk6k0XqfrRPkiunj4eAevyaY=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/ruudk/golang-pdf417 v0.0.0-20181029194003-1af4ab5afa58 h1:nlG4Wa5+minh3S9LVFtNoY+GVRiudA2e3EVfcCi3RCA=
