@@ -1,13 +1,7 @@
 package gofpdi
 
 import (
-//	"io"
-//	"net/http"
-//	"fmt"
-
 	realgofpdi "github.com/phpdave11/gofpdi"
-	//"github.com/phpdave11/gofpdf"
-//	"github.com/davecgh/go-spew/spew"
 )
 
 var fpdi = realgofpdi.NewImporter()
@@ -16,14 +10,10 @@ var fpdi = realgofpdi.NewImporter()
 // from the PDF generator to put the HTTP images on the PDF.
 type gofpdiPdf interface {
 	GetNextObjectID() int
-	ImportObjects(objs map[string]string)
+	ImportObjects(objs map[string][]byte)
+	ImportObjPos(objs map[string]map[int]string)
 	ImportTemplates(tpls map[string]string)
 	UseImportedTemplate(tplName string, x float64, y float64, w float64, h float64)
-/*
-	GetImageInfo(imageStr string) *gofpdf.ImageInfoType
-	ImageTypeFromMime(mimeStr string) string
-	RegisterImageReader(imgName, tp string, r io.Reader) *gofpdf.ImageInfoType
-*/
 	SetError(err error)
 }
 
@@ -37,7 +27,7 @@ func ImportPage(f gofpdiPdf, sourceFile string, pageno int, box string) int {
 
 	// gofpdi needs to know where to start the object id at.
 	// By default, it starts at 1, but gofpdf adds a few objects initially.
-	startObjId := 3//f.GetNextObjectID()
+	startObjId := 3 //f.GetNextObjectID()
 
 	// Set gofpdi next object ID to  whatever the value of startObjId is
 	fpdi.SetNextObjectID(startObjId)
@@ -57,6 +47,12 @@ func ImportPage(f gofpdiPdf, sourceFile string, pageno int, box string) int {
 
 	// Import gofpdi objects into gopdf, starting at whatever the value of startObjId is
 	f.ImportObjects(imported)
+
+	// Get a map[string]map[int]string of the object hashes and their positions within each object
+	importedObjPos := fpdi.GetImportedObjHashPos()
+
+	// Import gofpdi object hashes and their positions into gopdf
+	f.ImportObjPos(importedObjPos)
 
 	return tpl
 }

@@ -1,9 +1,9 @@
 package httpimg_test
 
 import (
-	"github.com/jung-kurt/gofpdf/v2"
-	"github.com/jung-kurt/gofpdfcontrib/httpimg"
-	"github.com/jung-kurt/gofpdfcontrib/internal/example"
+	"github.com/phpdave11/gofpdf"
+	"github.com/phpdave11/gofpdfcontrib/httpimg"
+	"github.com/phpdave11/gofpdfcontrib/internal/example"
 )
 
 func ExampleRegister() {
@@ -12,7 +12,7 @@ func ExampleRegister() {
 	pdf.SetFillColor(200, 200, 220)
 	pdf.AddPage()
 
-	url := "https://github.com/jung-kurt/gofpdf/raw/master/image/logo_gofpdf.jpg?raw=true"
+	url := "https://github.com/phpdave11/gofpdf/raw/master/image/logo_gofpdf.jpg?raw=true"
 	httpimg.Register(pdf, url, "")
 	pdf.Image(url, 15, 15, 267, 0, false, "", 0, "")
 	fileStr := example.Filename("contrib_httpimg_Register")
