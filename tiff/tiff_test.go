@@ -1,9 +1,9 @@
 package tiff_test
 
 import (
-	"github.com/phpdave11/gofpdf"
-	"github.com/phpdave11/gofpdfcontrib/internal/example"
-	"github.com/phpdave11/gofpdfcontrib/tiff"
+	"github.com/jung-kurt/gofpdf/v2"
+	"github.com/jung-kurt/gofpdfcontrib/internal/example"
+	"github.com/jung-kurt/gofpdfcontrib/tiff"
 )
 
 // ExampleRegisterFile demonstrates the loading and display of a TIFF image.
