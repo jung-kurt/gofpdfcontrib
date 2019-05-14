@@ -10,7 +10,6 @@ var fpdi = realgofpdi.NewImporter()
 // gofpdiPdf is a partial interface that only implements the functions we need
 // from the PDF generator to put the imported PDF templates on the PDF.
 type gofpdiPdf interface {
-	GetNextObjectID() int
 	ImportObjects(objs map[string][]byte)
 	ImportObjPos(objs map[string]map[int]string)
 	ImportTemplates(tpls map[string]string)
