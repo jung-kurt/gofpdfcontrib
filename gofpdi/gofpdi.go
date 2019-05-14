@@ -4,10 +4,11 @@ import (
 	realgofpdi "github.com/phpdave11/gofpdi"
 )
 
+// Create new gofpdi instance
 var fpdi = realgofpdi.NewImporter()
 
 // gofpdiPdf is a partial interface that only implements the functions we need
-// from the PDF generator to put the HTTP images on the PDF.
+// from the PDF generator to put the imported PDF templates on the PDF.
 type gofpdiPdf interface {
 	GetNextObjectID() int
 	ImportObjects(objs map[string][]byte)
@@ -17,38 +18,32 @@ type gofpdiPdf interface {
 	SetError(err error)
 }
 
-// Register registers a HTTP image. Downloading the image from the provided URL
-// and adding it to the PDF but not adding it to the page. Use Image() with the
-// same URL to add the image to the page.
+// Imports a page of a PDF file with the specified box (/MediaBox, /TrimBox, /ArtBox, /CropBox, or /BleedBox).
+// Returns a template id that can be used with UseImportedTemplate to draw the template onto the page.
 func ImportPage(f gofpdiPdf, sourceFile string, pageno int, box string) int {
-
 	// Set source file for fpdi
 	fpdi.SetSourceFile(sourceFile)
-
-	// gofpdi needs to know where to start the object id at.
-	// By default, it starts at 1, but gofpdf adds a few objects initially.
-	startObjId := 3 //f.GetNextObjectID()
-
-	// Set gofpdi next object ID to  whatever the value of startObjId is
-	fpdi.SetNextObjectID(startObjId)
 
 	// Import page
 	tpl := fpdi.ImportPage(pageno, box)
 
 	// Import objects into current pdf document
-	tplObjIds := fpdi.PutFormXobjects()
+	// Unordered means that the objects will be returned with a sha1 hash instead of an integer
+	// The objects themselves may have references to other hashes which will be replaced in ImportObjects()
+	tplObjIds := fpdi.PutFormXobjectsUnordered()
 
-	// Set template names and ids (hashes) in gopdf
+	// Set template names and ids (hashes) in gofpdf
 	f.ImportTemplates(tplObjIds)
 
-	// Get a map[int]string of the imported objects.
+	// Get a map[string]string of the imported objects.
 	// The map keys will be the ID of each object.
-	imported := fpdi.GetImportedObjects()
+	imported := fpdi.GetImportedObjectsUnordered()
 
-	// Import gofpdi objects into gopdf, starting at whatever the value of startObjId is
+	// Import gofpdi objects into gofpdf
 	f.ImportObjects(imported)
 
-	// Get a map[string]map[int]string of the object hashes and their positions within each object
+	// Get a map[string]map[int]string of the object hashes and their positions within each object, 
+	// to be replaced with object ids (integers).
 	importedObjPos := fpdi.GetImportedObjHashPos()
 
 	// Import gofpdi object hashes and their positions into gopdf
@@ -57,6 +52,9 @@ func ImportPage(f gofpdiPdf, sourceFile string, pageno int, box string) int {
 	return tpl
 }
 
+// Draw the template onto the page at x,y
+// If w is 0, the template will be scaled to fit based on h
+// If h is 0, the template will be scaled to fit based on w
 func UseImportedTemplate(f gofpdiPdf, tplid int, x float64, y float64, w float64, h float64) {
 	// Get values from fpdi
 	tplName, scaleX, scaleY, tX, tY := fpdi.UseTemplate(tplid, x, y, w, h)
